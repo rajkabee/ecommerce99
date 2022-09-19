@@ -1,6 +1,9 @@
 package com.example.demo.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -50,4 +53,41 @@ public class Product {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
+
+	public Product(ProductCategory category, String sku, String name, String description, BigDecimal unitPrice,
+			String imageUrl, boolean active, int unitsInStock) {
+		super();
+		this.category = category;
+		this.sku = sku;
+		this.name = name;
+		this.description = description;
+		this.unitPrice = unitPrice;
+		this.imageUrl = imageUrl;
+		this.active = active;
+		this.unitsInStock = unitsInStock;
+	}
+
+	public Product(Long id, ProductCategory category, String sku, String name, String description, BigDecimal unitPrice,
+			String imageUrl, boolean active, int unitsInStock, Date dateCreated, Date lastUpdated) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.sku = sku;
+		this.name = name;
+		this.description = description;
+		this.unitPrice = unitPrice;
+		this.imageUrl = imageUrl;
+		this.active = active;
+		this.unitsInStock = unitsInStock;
+		this.dateCreated = dateCreated;
+		this.lastUpdated = lastUpdated;
+	}
+
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+    
+    
+    
 }
