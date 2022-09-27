@@ -102,3 +102,14 @@
     
 })(jQuery);
 
+
+
+//cart toggle
+
+(function(){
+ 
+  $("#cart").on("click", function() {
+    $(".shopping-cart").fadeToggle( "fast");
+  });
+  
+})();
