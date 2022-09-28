@@ -1,6 +1,9 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +26,15 @@ public class MainController {
 	ProductCategoryRepository catRepo;
 	
 	@RequestMapping("/")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
+		List<Long> cartItems = (List<Long>) session.getAttribute("products_in_cart");
+		ArrayList<Product> cart = new ArrayList<>();
+		if(cartItems!=null) {
+			for(long i:cartItems) {
+				cart.add(productRepo.findById(i).get());
+			}
+		}
+		model.addAttribute("cart",cart);
 		List<ProductCategory> catList = catRepo.findAll();
 		model.addAttribute("categories",catList);
 		Pageable page = PageRequest.of(2, 10);
@@ -31,4 +42,13 @@ public class MainController {
 		model.addAttribute("products",products);
 		return "index";
 	}
+	
+	@RequestMapping("/checkout")
+	public String checkout() {
+		return "checkout";
+	}
+	
+	
+	
+	
 }

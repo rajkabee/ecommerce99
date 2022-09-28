@@ -20,6 +20,19 @@ public class CartController {
 	@Autowired
 	ProductRepository productRepo;
 	
+	@RequestMapping("/cart")
+	public String cart(HttpSession session, Model model) {
+		List<Long> cartItems = (List<Long>) session.getAttribute("products_in_cart");
+		ArrayList<Product> cart = new ArrayList<>();
+		if(cartItems!=null) {
+			for(long i:cartItems) {
+				cart.add(productRepo.findById(i).get());
+			}
+		}
+		model.addAttribute("cart",cart);
+		return "cart";
+	}
+	
 	@RequestMapping("/addToCart/{pid}")
 	public String addToCart(@PathVariable long pid, HttpSession session, Model model) {
 		ArrayList<Long> cart=(ArrayList<Long>) session.getAttribute("products_in_cart");

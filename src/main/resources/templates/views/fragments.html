@@ -170,13 +170,13 @@
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
                             <div class="dropdown">
-                            <a href="" class="btn px-0 ml-3 dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="cart" class="btn px-0 ml-3 dropdown-toggle" id="cart">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
                          
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						  <div class="shopping-cart">
+						
+						  <div class="shopping-cart" >
 						    <div class="shopping-cart-header">
 						      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
 						      <div class="shopping-cart-total">
@@ -186,9 +186,9 @@
 						    </div> <!--end shopping-cart-header -->
 						
 						    <ul class="shopping-cart-items">
-						      <li class="clearfix">
-						        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-						        <span class="item-name">Sony DSC-RX100M III</span>
+						      <li class="clearfix" th:each="product:${cart}">
+						        <img class="cartItem" th:src="${product.imageUrl}" alt="item1" />
+						        <span class="item-name" th:text="${product.name}"></span>
 						        <span class="item-price">$849.99</span>
 						        <span class="item-quantity">Quantity: 01</span>
 						      </li>
@@ -196,9 +196,9 @@
 						      
 						    </ul>
 						
-						    <a href="#" class="button">Checkout</a>
+						    <a href="checkout" class="button">Checkout</a>
 						  </div> <!--end shopping-cart -->
-						</div> <!--end container -->
+						 <!--end container -->
 						</div>
 						</div>
                     </div>

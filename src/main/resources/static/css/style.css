@@ -9595,7 +9595,7 @@ a.text-dark:hover, a.text-dark:focus {
   align-items: center;
   justify-content: center;
   background: rgba(61, 70, 77, 0.5);
-  z-index: 1;
+  
 }
 
 .cat-item {
@@ -9739,11 +9739,18 @@ a.text-dark:hover, a.text-dark:focus {
 .shopping-cart {
   margin: 20px 0;
   float: right;
-  background: white;
+  background: #fac905;
   width: 320px;
-  position: relative;
+  position: absolute;
+  left:-250px;
+  top: 20px;
   border-radius: 3px;
   padding: 20px;
+  display: none;
+}
+.dropdown-menu{
+	position: absolute;
+	left:-500px;
 }
 .shopping-cart .shopping-cart-header {
   border-bottom: 1px solid #E8E8E8;
@@ -9816,8 +9823,13 @@ a.text-dark:hover, a.text-dark:focus {
   display: table;
   clear: both;
 }
-
-
+.dropdown:hover .shopping-cart{
+	display:inline-block;
+	z-index:1;
+}
+.cartItem{
+	height: 100px;
+}
 /*
 carts  ends
 */
